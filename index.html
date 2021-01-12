@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Video Player</title>
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+<style>
+    .plyr__video-wrapper{
+        width:100%;
+        height: 100%;
+    }
+    .plyr__video-wrapper::before {
+position: absolute;
+top: 5px;
+left: 5px;
+z-index: 10;
+content: '';
+height: 30px;
+width: 100px;
+background: url('https://3.bp.blogspot.com/-d6da9ysmAI4/X8dRfg5_4RI/AAAAAAAAAtc/_ZwZdvBBam0GYhUdavqeIU26mgfYbSgVwCK4BGAYYCw/s1600/InShot_20201202_140229669-removebg-preview.png') no-repeat;
+background-size: 100px auto, auto;
+}
+</style>
+</head>
+<body>
+    <div id="video"></div>
+    <script>
+        var apikey = "AIzaSyAHIDPKFSVbDwk-NdlAW8n3uh2q6AJkyAA";
+        var video = document.location.search ;
+        video = video.substr(4);
+        video = "https://www.googleapis.com/drive/v3/files/"+video+"?alt=media&key="+apikey;
+
+        document.getElementById('video').innerHTML ='<video class="js-player"><source src=" ' + video + ' "/></video>'  ;
+    </script>
+
+
+<script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
+ <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const controls = [
+              'play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'volume', 'captions', 'settings', 'fullscreen'
+          ];
+          const player = Plyr.setup('.js-player', { controls });
+      });
+  </script>
+</body>
+</html>
